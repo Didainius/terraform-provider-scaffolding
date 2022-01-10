@@ -2,8 +2,8 @@ package provider
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -36,31 +36,35 @@ func resourceScaffoldingCreate(ctx context.Context, d *schema.ResourceData, meta
 	idFromAPI := "my-id"
 	d.SetId(idFromAPI)
 
+	terraformStdout := getTerraformStdout()
+	fmt.Fprintf(terraformStdout, "OUTPUT LINE")
+
 	// write logs using the tflog package
 	// see https://pkg.go.dev/github.com/hashicorp/terraform-plugin-log/tflog
 	// for more information
-	tflog.Trace(ctx, "created a resource")
+	// tflog.Trace(ctx, "created a resource")
 
-	return diag.Errorf("not implemented")
+	// return diag.Errorf("not implemented")
+	return nil
 }
 
 func resourceScaffoldingRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return diag.Errorf("not implemented")
+	return nil
 }
 
 func resourceScaffoldingUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return diag.Errorf("not implemented")
+	return nil
 }
 
 func resourceScaffoldingDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return diag.Errorf("not implemented")
+	return nil
 }
