@@ -33,11 +33,14 @@ func resourceScaffoldingCreate(ctx context.Context, d *schema.ResourceData, meta
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
+	terraformStdout := getTerraformStdout()
+
+	fmt.Fprintf(terraformStdout, "OUTPUT LINE before ID set")
+
 	idFromAPI := "my-id"
 	d.SetId(idFromAPI)
 
-	terraformStdout := getTerraformStdout()
-	fmt.Fprintf(terraformStdout, "OUTPUT LINE")
+	fmt.Fprintf(terraformStdout, "OUTPUT LINE after ID set")
 
 	// write logs using the tflog package
 	// see https://pkg.go.dev/github.com/hashicorp/terraform-plugin-log/tflog
